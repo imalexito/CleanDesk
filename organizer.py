@@ -17,7 +17,7 @@ def organize():
 	for filename in os.listdir(downloads_path):
 		name, extension= os.path.splitext(filename)
 
-	for folder, extensions in folder.items():
+	for folder, extensions in folders.items():
 		if extensions.lower() in extensions:
 			dest_folder = os.path.join(downloads_path, folder)
 	
