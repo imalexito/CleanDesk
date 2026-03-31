@@ -8,8 +8,11 @@ downloads_path = os.path.expanduser("~/Downloads")
 
 folders = {
 	"Images": [".jpg",".jpeg",".png",".gif"],
-	"Documents": [".pdf",".docx",".txt",".xlsx"],
-	"Installers": [".dmg",".pkg",".zip"]
+	"Documents": [".pdf",".docx",".txt",".xlsx",".epub"],
+	"Installers": [".dmg",".pkg",".zip"],
+	"Code": [".py",".js",".html",".css"],
+	"Anky": [".anki",".apkg"],
+	"fonts": [".ttf",".otf"]
 	}
 
 
