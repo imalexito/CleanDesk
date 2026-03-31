@@ -15,20 +15,29 @@ folders = {
 
 def organize():
 	for filename in os.listdir(downloads_path):
-		name, extension= os.path.splitext(filename)
+		# skip directories
+		if os.path.isdir(os.path.join(downloads_path, filename)):
+			continue
+		name, extension = os.path.splitext(filename)
+		extension = extension.lower()
 
-	for folder, extensions in folders.items():
-		if extensions.lower() in extensions:
-			dest_folder = os.path.join(downloads_path, folder)
-	
-			#create folder if it doesn´t exist
-			if not os.path.exists(dest_folder):
-				os.makedirs(dest_folder)
+		for folder, extensions in folders.items():
+			if extension in extensions:
+				dest_folder = os.path.join(downloads_path, folder)
 
-			#move the file
-			shutil.move (os.path.join(downloads_path, filename),
-					os.path .join(dest_folder),filename)
-			print(f"moved: {filename} to {folder}")
+				# create folder if it doesn't exist
+				if not os.path.exists(dest_folder):
+					os.makedirs(dest_folder)
+
+				# move the file
+				src = os.path.join(downloads_path, filename)
+				dst = os.path.join(dest_folder, filename)
+				try:
+					shutil.move(src, dst)
+					print(f"moved: {filename} to {folder}")
+				except Exception as e:
+					print(f"failed to move {filename}: {e}")
+				break
 
 if __name__ == "__main__":
 	organize()
